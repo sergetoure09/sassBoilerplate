@@ -1,0 +1,24 @@
+{
+  "name": "myhtmlcssboilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "node-sass": "^4.8.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:sass":"node-sass ./sass/style.scss index.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergetoure09/myhtmlcssboilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergetoure09/myhtmlcssboilerplate/issues"
+  },
+  "homepage": "https://github.com/sergetoure09/myhtmlcssboilerplate#readme"
+}
