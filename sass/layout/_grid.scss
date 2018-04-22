@@ -1,0 +1,10 @@
+.container{
+    max-width:$max-width;
+   
+    //backface-visibility: hidden;
+    margin:0 auto;
+    @include grid
+}
+
+    
+  

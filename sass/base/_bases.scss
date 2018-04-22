@@ -1,0 +1,44 @@
+*,
+*::after,
+*::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit
+}
+
+html {
+    font-size: 62.5%; // convert 16px root size to 10px that ease further calculation 1rem=16px default so 10px/16px=1rem=62.5%
+  
+    @include respond(tab-land){ //<1200
+        font-size: 56.25%; // 9/16=56.25%
+    }
+
+    @include respond(tab-port){ //<900
+        font-size: 52%;//if we want 1rem=8px then 8/16=50%
+    }
+
+    @include respond(phone){ //<600 
+        font-size: 50%;
+    }
+
+    @include respond(big-desktop){
+        font-size: 80%;
+    }
+}
+
+
+body {
+   
+    box-sizing:border-box;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: $color-grey-dark;
+    padding: 3rem;
+
+    @include respond(tab-port){
+        padding: 0;
+    }
+}
+

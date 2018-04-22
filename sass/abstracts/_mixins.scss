@@ -1,0 +1,253 @@
+@mixin bg-mixin($color-light,$color-dark,$img){
+    background-image: linear-gradient( to right bottom, rgba($color-light, .5), rgba( $color-dark, .5)), url($img);
+    background-size:cover;
+
+
+    // @include respond(tab-port){
+    //     background-size:60%;
+    // }
+    background-position: top;
+}
+@mixin margin-top($val){
+    margin-top: $val;
+}
+
+@mixin col_base{
+    //height:$row-height;
+    //background-color:$col-bg-color;
+    float: left;
+    
+   
+}
+@mixin text-gradient{
+    background-image: linear-gradient(to right,$color-primary,$color-primary-light);
+        -webkit-background-clip: text;
+        color: transparent;
+}
+
+
+@mixin clearfix{
+
+    &::after{
+        content:"";
+        display: block;
+        clear: both
+    }
+
+}
+
+
+@mixin read-more{
+    padding: .6rem;
+    background-image: linear-gradient(to right,$color-primary-dark,$color-primary-light);
+    color: $color-white;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .2s;
+    display: inline-block;
+    
+
+    &:hover{
+        transform:translateY(-2px);
+        box-shadow: 0 .2rem 1rem rgba(0,0,0,.5);
+    }
+
+    &:active{
+        transform:translateY(-.5px);
+        box-shadow: 0 .2rem .5rem rgba(0,0,0,.5);
+    }
+
+
+}
+
+
+@mixin grid{
+
+    .row{
+        width:100%;
+
+        @include respond(tab-port){
+            width: 60%;
+            margin: 0 auto;
+        }
+        // overflow: hidden;
+        // backface-visibility: hidden;
+        //background-color: $color-bg-row;
+        @include clearfix;
+      
+
+        &:not(:last-child){
+    margin-bottom:$vertical-gutter;
+
+    @include respond(tab-port){
+        margin-bottom: $vertical-gutter-small;
+    }
+
+        }
+   
+
+        [class^='col-']{
+            //overflow: hidden;
+            //@extend %red-color;
+            @include col_base();
+            &:not(:last-child){
+                margin-right:$horizontal-gutter;
+                @include respond(tab-port){
+                    margin-right: 0 ;
+                    margin-bottom: $vertical-gutter-small;
+                }
+            }
+
+            @include respond(tab-port){
+                width: 100% !important;
+               // text-align: center !important;
+            }
+        }
+        
+        .col-1-of-12{
+
+            width: mult(1)
+
+        };
+        .col-2-of-12{
+            width: mult(2)
+        };
+        .col-3-of-12{
+            width: mult(3)
+        };
+        .col-4-of-12{
+            width: mult(4)
+        };
+        .col-5-of-12{
+            width: mult(5)
+
+        };
+        .col-6-of-12{
+            width: mult(6)
+
+        };
+        .col-7-of-12{
+            width: mult(7)
+
+        };
+        .col-8-of-12{
+            width: mult(8)
+
+        };
+        .col-9-of-12{
+            width: mult(9)
+
+        };
+        .col-10-of-12{
+            width: mult(10)
+
+        }; 
+        .col-11-of-12{
+            width: mult(11)
+
+        };
+        .col-12-of-12{
+            width: mult(12)
+
+        };
+       
+
+    }
+}
+@mixin perspective{
+    perspective: 50rem;
+    -moz-perspective: 150rem;
+    -webkit-perspective: 150rem;
+    height: 53rem;
+
+
+ 
+    
+}
+
+@mixin custom-header-button{
+    box-shadow: 0 0rem 0rem rgba(0, 0, 0, .4);
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 -.5rem 4rem rgba(0, 0, 0, .4);
+        &::after {
+            transform: scaleX(2) scaleY(2);
+            opacity: 0
+        }
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 -.5rem .3rem rgba(0, 0, 0, .1)
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 5rem;
+        z-index: -1;
+        transition: all .2s
+    }
+}
+@mixin absCenter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+
+}
+
+
+//MEDIA QUERY MANAGER
+/*
+0-600px: Phone
+600px:900px Tablet protrait
+900px:1200px Tablet landscape
+1200px:1800px DEFAULT
+1800px + Big desktop
+
+*/
+
+
+@mixin respond-phone{
+    @media(max-width:600px){
+        @content
+    };
+}
+//breakpoint argumetn choices:
+//phone
+//tab-port
+//tab-land
+//big-desktop
+
+//ORDER of change: base+typo>general layout+grid>page layout > components 
+
+@mixin respond($breakpoint){
+    @if($breakpoint==phone){
+        @media (max-width:37.5em){
+            @content
+        }
+    };
+
+    @if($breakpoint==tab-port){
+        @media (max-width:56.25em){
+            @content
+        }
+    };
+
+    @if($breakpoint==tab-land){
+        @media (max-width:75em){
+            @content
+        }
+    };
+
+    @if($breakpoint==big-desktop){
+        @media (min-width:112.5em){
+            @content
+        }
+    };
+
+}
