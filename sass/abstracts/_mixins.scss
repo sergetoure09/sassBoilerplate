@@ -37,30 +37,6 @@
 }
 
 
-@mixin read-more{
-    padding: .6rem;
-    background-image: linear-gradient(to right,$color-primary-dark,$color-primary-light);
-    color: $color-white;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all .2s;
-    display: inline-block;
-    
-
-    &:hover{
-        transform:translateY(-2px);
-        box-shadow: 0 .2rem 1rem rgba(0,0,0,.5);
-    }
-
-    &:active{
-        transform:translateY(-.5px);
-        box-shadow: 0 .2rem .5rem rgba(0,0,0,.5);
-    }
-
-
-}
-
-
 @mixin grid{
 
     .row{
